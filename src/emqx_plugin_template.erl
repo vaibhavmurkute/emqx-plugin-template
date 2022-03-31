@@ -39,9 +39,9 @@ load(Env) ->
 %% Client Lifecircle Hooks
 %%--------------------------------------------------------------------
 
-on_client_connect(ConnInfo = #{clientid := ClientId, peercert := ClientCert, username := Username}, Props, _Env) ->
-    io:format("~n#### Client(~s) connect: Call IPC GetClientDeviceAuthToken with ThingName: ~s and ClientCert in: ~p~n",
-              [ClientId, ClientId, ConnInfo]),
+on_client_connect(ConnInfo = #{clientid := ClientId}, Props, _Env) ->
+    io:format("#### Client(~s) connect, Call IPC GetClientDeviceAuthToken with ConnInfo: ~p~n",
+              [ClientId, ConnInfo]),
     {ok, Props}.
 
 
