@@ -40,19 +40,19 @@ load(Env) ->
 %%--------------------------------------------------------------------
 
 on_client_connect(ConnInfo = #{clientid := ClientId, peercert := ClientCert, username := Username}, Props, _Env) ->
-    io:format("#### Client(~s) connect: Call IPC GetClientDeviceAuthToken with: ThingName: ~s, ClientCert: ~s, or Username: ~s",
+    io:format("~n Client(~s) connect: Call IPC GetClientDeviceAuthToken with: ThingName: ~s, ClientCert: ~p, or Username: ~s ~n",
               [ClientId, ClientId, ClientCert, Username]),
     {ok, Props}.
 
 
 on_client_authenticate(_ClientInfo = #{clientid := ClientId, username := Username, password := Password}, Result, _Env) ->
-        io:format("#### Client(~s) authenticate: Call IPC GetClientDeviceAuthToken if needed for ThingName: ~s, Username: ~s, Password: ~s",
+        io:format("~n Client(~s) authenticate: Call IPC GetClientDeviceAuthToken if needed for ThingName: ~s, Username: ~s, Password: ~s ~n",
                   [ClientId, ClientId, Username, Password]),
         {ok, Result}.
 
 
 on_client_check_acl(_ClientInfo = #{clientid := ClientId}, Topic, PubSub, Result, _Env) ->
-    io:format("#### Client(~s) check_acl: Call IPC CheckClientDeviceAuthorization with: ClientId: ~s, Action: ~s, Resource: ~s",
+    io:format("~n Client(~s) check_acl: Call IPC CheckClientDeviceAuthorization with: ClientId: ~s, Action: ~s, Resource: ~s ~n",
               [ClientId, ClientId, PubSub, Topic]),
     {ok, Result}.
 
